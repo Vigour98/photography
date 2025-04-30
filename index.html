@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Pro Photography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .hero,
+        .features,
+        .video-section,
+        .learn-section,
+        .intro-section,
+        .imagine-section,
+        .footer-section {
+            background-color: transparent;
+            background-image: none;
+            position: relative;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .price-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .description, .follow-through {
+            color: #FFE55C;
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            line-height: 1.4;
+            margin: 2rem auto;
+            max-width: 900px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background-color: #FF4444;
+            color: white;
+            border: none;
+            padding: 1.2rem 2rem;
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 2rem auto;
+            display: block;
+            width: 80%; /* Increased to 80% for larger screens */
+            max-width: 1000px; /* Increased max-width to allow for wider buttons on large screens */
+        }
+
+        .cta-button:hover {
+            background-color: #FF2222;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .cta-button {
+                width: 90%; /* Wider on mobile screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 1rem;
+            }
+            
+            .description, .follow-through {
+                margin: 1.5rem auto;
+            }
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: black;
+            width: 80%;
+            margin: 0 auto; /* Center the section horizontally */
+        }
+
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            line-height: 1.3;
+            color: white; /* Explicitly set to white */
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-item {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            color: white;
+            font-weight: 500;
+        }
+
+        .features-cta {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: white; /* Explicitly set to white */
+            margin-top: 2rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                padding: 2rem 1rem;
+                width: 90%; /* Slightly wider on mobile for better readability */
+            }
+            
+            .feature-item {
+                font-size: 1.2rem;
+            }
+            
+            .features-cta {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">📸Learn Pro Photography</h1>
+            <h2 class="subtitle">Entire Wedding Day Like a Pro<br>— Starting Today</h2>
+            <h2 class="price-title">Step-by-Step Behind The Scenes Real Wedding<br>Walkthrough — Just $27</h2>
+            
+            <p class="description">
+                No fluff. No confusing theory. Just a clear, real-world breakdown of how 
+                we shoot weddings from start to finish — camera settings, lighting, 
+                posing, and how to direct couples naturally.
+            </p>
+            
+            <p class="follow-through">
+                Follow us through a real wedding and learn exactly how we approach 
+                every scene — so you can start shooting with confidence and booking 
+                clients who love your work.
+            </p>
+            
+            <button class="cta-button">
+                👉 GET INSTANT ACCESS FOR JUST $27
+            </button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-content">
+            <h2 class="features-title">🎯 Used by Aspiring Photographers, Side Hustlers & Creatives Who Want to Start Shooting Weddings Fast</h2>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    📸 Follow a real wedding from start to finish
+                </div>
+                <div class="feature-item">
+                    🚀 Learn exactly how we shoot, pose, light, and interact — all in one training
+                </div>
+                <div class="feature-item">
+                    ✅ Works even if you've never shot a wedding before
+                </div>
+                <div class="feature-item">
+                    🧠 No expensive gear or tech skills needed
+                </div>
+            </div>
+
+            <div class="features-cta">
+                No Experience Needed — Just Follow Our Step-by-Step Wedding Walkthrough and Start Shooting Like a Pro Today for Just $27
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="video-container">
+            <video class="custom-video-player" controls>
+                <source src="your-video-path.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <button class="cta-button">
+            👉 GET INSTANT ACCESS FOR JUST $27
+        </button>
+    </section>
+
+    <section class="learn-section">
+        <div class="learn-content">
+            <h2 class="learn-title">📸 What You'll Learn Inside This Step-by-Step Wedding Walkthrough</h2>
+            
+            <div class="learn-items">
+                <div class="learn-item">
+                    <h3>✓ How to Confidently Shoot Every Part of the Wedding Day</h3>
+                    <p>→ No more guessing — we show you exactly how to approach every moment, from bridal prep to the final send-off, so you never miss a shot or feel lost on the job.</p>
+                </div>
+
+                <div class="learn-item">
+                    <h3>✓ How to Use the Right Camera Settings, Lenses & Lighting</h3>
+                    <p>→ Learn what gear we use and why— plus how to adjust based on the setting, lighting conditions, and moment. This is how you get consistently stunning results, even in tough environments.</p>
+                </div>
+
+                <div class="learn-item">
+                    <h3>✓ How to Pose and Direct Couples Naturally</h3>
+                    <p>→ Get our go-to prompts and techniques to make any couple feel comfortable in front of the lens — so you capture authentic, emotional images (without awkward stiffness or fake smiles).</p>
+                </div>
+
+                <div class="learn-item">
+                    <h3>✓ How to Flow Through the Wedding Day Like a Pro</h3>
+                    <p>→ You'll learn how to think ahead, stay organized, and create a smooth experience for your clients — so you can shoot with confidence and start building a reputation fast.</p>
+                </div>
+
+                <button class="cta-button">
+                    👉 GET INSTANT ACCESS FOR JUST $27
+                </button>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <div class="intro-content">
+            <div class="text-content">
+                <p class="intro-text">
+                    We break down our proven techniques, including:
+                </p>
+                
+                <div class="technique-list">
+                    <div class="technique-item">
+                        ✅ Camera Settings & Lenses for Every Scene
+                    </div>
+                    <div class="technique-item">
+                        ✅ Lighting Mastery for Indoor & Outdoor Shoots
+                    </div>
+                    <div class="technique-item">
+                        ✅ How to Make Clients Feel Comfortable on Camera
+                    </div>
+                    <div class="technique-item">
+                        ✅ Posing Techniques for Couples and Groups
+                    </div>
+                    <div class="technique-item">
+                        ✅ Storytelling Through Photography
+                    </div>
+                    <div class="technique-item">
+                        ✅ Composition Strategies for Stunning Shots
+                    </div>
+                    <div class="technique-item">
+                        ✅ Real-Time Wedding Walkthrough
+                    </div>
+                    <div class="technique-item">
+                        ✅ Building a Photography Brand that Stands Out
+                    </div>
+                    <div class="technique-item">
+                        ✅ How To Get More Clients From Each Wedding
+                    </div>
+                </div>
+
+                <p class="closing-statement">
+                    These aren't just theories—they're the same strategies we've used to build profitable, in-demand wedding photography businesses.
+                </p>
+
+                <p class="final-hook">
+                    Whether you're already capturing special moments or just starting out, this comprehensive guide will help you master the art of wedding photography and build a thriving business.
+                </p>
+            </div>
+            <div class="image-gallery">
+                <img src="wedding-couple-1.jpg" alt="Elegant couple in wedding attire" class="gallery-image top">
+                <img src="wedding-couple-2.jpg" alt="Wedding couple outdoor ceremony" class="gallery-image bottom">
+            </div>
+        </div>
+    </section>
+
+    <section class="imagine-section">
+        <h2 class="imagine-title">Imagine getting paid top dollar<br>to capture magical moments<br>like the ones below!</h2>
+        
+        <div class="image-showcase">
+            <img src="beach-couple.jpg" alt="Couple on rocky beach" class="showcase-image">
+            <img src="intimate-couple.jpg" alt="Intimate couple portrait" class="showcase-image">
+            <img src="sparkler-exit.jpg" alt="Wedding sparkler exit" class="showcase-image">
+        </div>
+    </section>
+
+    <style>
+        .intro-section {
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .intro-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .technique-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .technique-item {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .closing-statement {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .final-hook {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .gallery-image {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .gallery-image.top {
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-image.bottom {
+            aspect-ratio: 3/4;
+        }
+
+        @media (max-width: 968px) {
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+
+            .image-gallery {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intro-section {
+                padding: 2rem 1rem;
+            }
+            
+            .technique-item {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <style>
+        .video-section {
+            padding: 4rem 2rem;
+        }
+
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
+
+        .custom-video-player {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        /* Custom video controls styling */
+        .custom-video-player::-webkit-media-controls {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 0 0 8px 8px;
+        }
+
+        .custom-video-player::-webkit-media-controls-panel {
+            background-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .video-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+
+    <style>
+        .learn-section {
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .learn-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .learn-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .learn-items {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .learn-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .learn-item h3 {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #FFE55C;
+        }
+
+        .learn-item p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.6;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .learn-section {
+                padding: 2rem 1rem;
+            }
+            
+            .learn-item {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+
+    <style>
+        .imagine-section {
+            padding: 4rem 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .imagine-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .image-showcase {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-image:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 968px) {
+            .image-showcase {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+            
+            .showcase-image {
+                height: 300px;
+            }
+            
+            .imagine-title {
+                font-size: clamp(2rem, 4vw, 3rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .imagine-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+
+<section class="video-section">
+    <div class="video-container">
+        <video class="custom-video-player" controls>
+            <source src="your-video-path.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <button class="cta-button">
+        👉 GET INSTANT ACCESS FOR JUST $27
+    </button>
+</section>
+
+<footer class="footer-section">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="lite-lens-logo.png" alt="LITE LENS" class="logo">
+        </div>
+        
+        <div class="footer-info">
+            <p class="copyright">© Copyright 2025</p>
+            <p class="footer-links">
+                <a href="/terms">Terms Of Service</a>/<a href="/privacy">Privacy Policy</a>
+            </p>
+            
+            <p class="disclaimer">
+                *Earnings and income representations made by use or advertisers/sponsors are aspirational statements only of your earnings potential. The success of our testimonials and other examples used are exceptional, non-typical results and are not intended to be and are not a guarantee that you or others will achieve the same results. Individual results will always vary and yours will depend entirely on your individual capacity, work ethic, business skills and experience, level of motivation, diligence in applying our Programs, the economy, the normal and unforeseen risks of doing business, and other factors. We are not responsible for your actions. You are solely responsible for your own moves and decisions and the evaluation and use of our products and services should be based on your own due diligence. You agree that our Programs are not liable to you in any way for your results in using our products and services. See our Terms & Conditions for our full disclaimer of liability and other restrictions.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<style>
+.footer-section {
+    padding: 4rem 2rem;
+    color: white;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-logo {
+    margin-bottom: 2rem;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.disclaimer {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        padding: 2rem 1rem;
+    }
+    
+    .disclaimer {
+        font-size: 0.7rem;
+    }
+}
+</style>
+</body>
+</html>
+
+<!-- Add this modal HTML just before the closing </body> tag -->
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <img src="logo.png" alt="Logo" class="modal-logo">
+            <h2>Step-by-Step Wedding Photography Training—Behind The Scenes Real Wedding Walkthrough — Just $27</h2>
+            <p class="bonus-text">Plus an exclusive invitation on the next page</p>
+        </div>
+        
+        <form id="orderForm" class="order-form">
+            <input type="text" placeholder="Full Name..." required>
+            <input type="email" placeholder="Email Address..." required>
+            
+            <div class="order-item">
+                <div class="item-header">
+                    <input type="checkbox" checked disabled>
+                    <label>Wedding Photography Mastery</label>
+                    <span class="quantity">1</span>
+                    <span class="price">$27.00</span>
+                </div>
+            </div>
+
+            <div class="upsell-box">
+                <label class="upsell-option">
+                    <input type="checkbox" name="preset-pack">
+                    <span class="checkmark">✓</span>
+                    Yes, I Want to Instantly Enhance My Wedding Photos with the Complete Photo Preset Pack!
+                </label>
+                <p class="upsell-description">
+                    ONE TIME OFFER (Over 90% OFF): Get our exact Lightroom presets used to create stunning, professional wedding edits — in just a few clicks — for only $10! Make your photos pop, save hours on editing, and deliver gallery-ready images that clients love.
+                </p>
+            </div>
+
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span>Order Total</span>
+                    <span class="total-amount">$27.00</span>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <div class="payment-option">
+                    <input type="radio" name="payment" value="card" checked>
+                    <label>Card</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" value="amazon">
+                    <label>Amazon Pay</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" value="cashapp">
+                    <label>Cash App Pay</label>
+                </div>
+            </div>
+
+            <div class="card-details">
+                <input type="text" placeholder="Card number" pattern="[0-9]{16}" maxlength="16">
+                <div class="card-extra">
+                    <input type="text" placeholder="MM / YY" pattern="[0-9]{2}/[0-9]{2}" maxlength="5">
+                    <input type="text" placeholder="CVC" pattern="[0-9]{3}" maxlength="3">
+                </div>
+                <select name="country">
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </div>
+
+            <button type="submit" class="complete-order">Complete Order</button>
+            <p class="secure-text">* 100% Secure & Safe Payments *</p>
+        </form>
+    </div>
+</div>
+
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    overflow-y: auto;
+    opacity: 0;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    background-color: rgba(0,0,0,0.7);
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.bonus-text {
+    color: #666;
+}
+
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.upsell-box {
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.upsell-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.order-summary {
+    background-color: #f5f5f5;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.complete-order {
+    width: 100%;
+    padding: 15px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.secure-text {
+    text-align: center;
+    color: #666;
+    margin-top: 10px;
+}
+</style>
+
+<script>
+// Get modal elements
+const modal = document.getElementById('orderModal');
+const closeBtn = document.getElementsByClassName('close')[0];
+const ctaButtons = document.getElementsByClassName('cta-button');
+
+// Function to show modal with transition
+function showModal() {
+    modal.style.display = "block";
+    requestAnimationFrame(() => {
+        modal.classList.add('show');
+    });
+}
+
+// Function to hide modal with transition
+function hideModal() {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 300); // Match this with transition duration (300ms = 0.3s)
+}
+
+// Show modal on page load after a short delay
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        showModal();
+    }, 2000); // 2 second delay before showing modal on page load
+});
+
+// Show modal when clicking CTA buttons
+Array.from(ctaButtons).forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        showModal();
+    });
+});
+
+// Close modal when clicking (x)
+closeBtn.addEventListener('click', () => {
+    hideModal();
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        hideModal();
+    }
+});
+
+// Handle form submission
+document.getElementById('orderForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    console.log('Form submitted');
+});
+
+// Update total when upsell is selected
+const upsellCheckbox = document.querySelector('input[name="preset-pack"]');
+const totalAmount = document.querySelector('.total-amount');
+upsellCheckbox.addEventListener('change', function() {
+    const basePrice = 27;
+    const upsellPrice = 10;
+    totalAmount.textContent = this.checked ? `$${basePrice + upsellPrice}.00` : `$${basePrice}.00`;
+}); // Added missing closing curly brace and parenthesis
+</script>
